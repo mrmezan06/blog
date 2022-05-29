@@ -32,6 +32,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/post/create', [
         PostsController::class, 'create'
      ])->name('post.create');
+
+     Route::get('/posts', [
+      PostsController::class, 'index'
+   ])->name('posts');
+
      
      Route::post('/post/store', [
          PostsController::class, 'store'
