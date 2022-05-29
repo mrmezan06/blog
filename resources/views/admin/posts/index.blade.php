@@ -41,7 +41,7 @@
                        <a href="{{ route('category.edit', [ 'id' => $post->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
                    </td>
                    <td>
-                       <a href="{{ route('category.delete', [ 'id' => $post->id ]) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                       <a href="{{ route('post.delete', [ 'id' => $post->id ]) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                    </td>
                </tr>
                @endforeach

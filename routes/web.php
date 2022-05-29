@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
          PostsController::class, 'store'
       ])->name('post.store');
 
+      Route::get('/post/delete/{id}', [
+         PostsController::class, 'destroy'
+      ])->name('post.delete');
+
         // Category view show create.blade.php
       Route::get('/category/create', [
         CategoriesController::class, 'create'
