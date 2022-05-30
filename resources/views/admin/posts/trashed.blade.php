@@ -17,7 +17,7 @@
 
     <div class="panel panel-default mt-4">
         <div class="panel-heading list-group-item">
-            Create a new category
+            Trashed Post Table
         </div>
 
         <div class="panel-body list-group-item">
@@ -25,7 +25,7 @@
            <thead>
                <th>Image</th>
                <th>Title</th>
-               <th>Edit</th>
+               <!-- <th>Edit</th> -->
                <th>Restore</th>
                <th>Remove</th>
            </thead>
@@ -38,14 +38,14 @@
                    <td>
                        {{ $post->title }}
                    </td>
-                   <td>
+                   <!-- <td>
                        <a href="{{ route('category.edit', [ 'id' => $post->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
+                   </td> -->
+                   <td>
+                       <a href="{{ route('post.restore', [ 'id' => $post->id ]) }}" class="btn btn-success"><i class="fa-solid fa-trash-restore"></i></a>
                    </td>
                    <td>
-                       <a href="{{ route('post.delete', [ 'id' => $post->id ]) }}" class="btn btn-success"><i class="fa-solid fa-trash-restore"></i></a>
-                   </td>
-                   <td>
-                       <a href="{{ route('posts.removed', [ 'id' => $post->id ]) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                       <a href="{{ route('post.removed', [ 'id' => $post->id ]) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                    </td>
                </tr>
                @endforeach

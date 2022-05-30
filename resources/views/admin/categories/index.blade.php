@@ -17,7 +17,7 @@
 
     <div class="panel panel-default mt-4">
         <div class="panel-heading list-group-item">
-            Create a new category
+            Category Table
         </div>
 
         <div class="panel-body list-group-item">

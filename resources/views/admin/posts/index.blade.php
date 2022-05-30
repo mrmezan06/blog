@@ -17,7 +17,7 @@
 
     <div class="panel panel-default mt-4">
         <div class="panel-heading list-group-item">
-            Create a new category
+            Post Table
         </div>
 
         <div class="panel-body list-group-item">
@@ -38,7 +38,7 @@
                        {{ $post->title }}
                    </td>
                    <td>
-                       <a href="{{ route('category.edit', [ 'id' => $post->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
+                       <a href="{{ route('post.edit', [ 'id' => $post->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
                    </td>
                    <td>
                        <a href="{{ route('post.delete', [ 'id' => $post->id ]) }}" class="btn btn-warning"><i class="fa-solid fa-trash-can"></i></a>

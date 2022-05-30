@@ -92,7 +92,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -104,7 +105,32 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->hasFile('featured'))
+        {
+            $featured = $request->featured;
+            $featured_new_name = time().$featured->getClientOriginalName();
+            $featured->move('uploads/posts', $featured_new_name);
+            $post->featured = 'uploads/posts/' . $featured_new_name;
+
+        }
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+
+        Session::flash('success', 'You Successfully Updated The Post.');
+        return redirect()->route('posts');
+
     }
 
     /**
@@ -117,7 +143,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        Session::flash('success', 'You successfully trashed the Post.');
+        Session::flash('success', 'You Successfully Trashed The Post.');
         return redirect()->route('posts');
     }
 
@@ -134,7 +160,17 @@ class PostsController extends Controller
         $post = Post::withTrashed()->where('id', $id)->first();
         //dd($post);
         $post->forceDelete();
-        Session::flash('success', 'You Successfully Deleted the Post Permanently.');
+        Session::flash('success', 'You Successfully Deleted The Post Permanently.');
         return redirect()->back();
+    }
+
+    // Recycle trashed post
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        //dd($post);
+        $post->restore();
+        Session::flash('success', 'You Successfully Restored The Post.');
+        return redirect()->route('posts');
     }
 }

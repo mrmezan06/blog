@@ -29,21 +29,36 @@ require __DIR__.'/auth.php';
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     // Post
-    Route::get('/post/create', [
-        PostsController::class, 'create'
-     ])->name('post.create');
+      Route::get('/post/create', [
+         PostsController::class, 'create'
+      ])->name('post.create');
 
-     Route::get('/posts', [
-      PostsController::class, 'index'
-   ])->name('posts');
+      Route::get('/posts', [
+         PostsController::class, 'index'
+      ])->name('posts');
+
+      Route::get('/post/edit/{id}', [
+         PostsController::class, 'edit'
+      ])->name('post.edit');
+
+      Route::post('/post/update/{id}', [
+         PostsController::class, 'update'
+      ])->name('post.update');
 
       Route::get('/posts/trashed', [
          PostsController::class, 'trashed'
       ])->name('posts.trashed');
 
-      Route::get('/posts/removed/{id}', [
+      Route::get('/post/removed/{id}', [
          PostsController::class, 'removed'
-      ])->name('posts.removed');
+      ])->name('post.removed');
+
+      Route::get('/post/restore/{id}', [
+         PostsController::class, 'restore'
+      ])->name('post.restore');
+
+
+
 
      
      Route::post('/post/store', [
