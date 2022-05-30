@@ -48,11 +48,19 @@
                         <list class="list-group-item mt-4">
                                <a href="/dashboard" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Home</a>
                             </list>
+
                             <list class="list-group-item mt-4">
                                 <a href="{{ route('categories') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Categories</a>
-                                
-                               
                             </list>
+
+                            <list class="list-group-item mt-4">
+                                <a href="{{ route('tags') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Tags</a>
+                            </list>
+
+                            <list class="list-group-item mt-4">
+                                <a href="{{ route('tag.create') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Create new tag</a>
+                            </list>
+
                             <list class="list-group-item mt-4">
                                 <a href="{{ route('posts') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">All Post</a> 
                             </list>

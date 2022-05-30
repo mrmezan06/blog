@@ -17,38 +17,34 @@
 
     <div class="panel panel-default mt-4">
         <div class="panel-heading list-group-item">
-            Published Posts
+            Tags
         </div>
 
         <div class="panel-body list-group-item">
            <table class="table table-hover">
            <thead>
-               <th>Image</th>
-               <th>Title</th>
-               <th>Edit</th>
-               <th>Recycle Bin</th>
+               <th>Tag name</th>
+               <th>Editing</th>
+               <th>Deleting</th>
            </thead>
            <tbody>
-           @if($posts->count() > 0)
-               @foreach($posts as $post)
+           @if($tags->count() > 0)
+               @foreach($tags as $tag)
                <tr>
                    <td>
-                      <img src="{{ $post->featured }}" alt="{{ $post->title }}" width="90px" height="50px">
+                       {{ $tag->tag }}
                    </td>
                    <td>
-                       {{ $post->title }}
+                       <a href="{{ route('tag.edit', [ 'id' => $tag->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
                    </td>
                    <td>
-                       <a href="{{ route('post.edit', [ 'id' => $post->id ]) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
-                   </td>
-                   <td>
-                       <a href="{{ route('post.delete', [ 'id' => $post->id ]) }}" class="btn btn-warning"><i class="fa-solid fa-trash-can"></i></a>
+                       <a href="{{ route('tag.delete', [ 'id' => $tag->id ]) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                    </td>
                </tr>
                @endforeach
                @else
                     <tr>
-                        <th colspan="5" class="text-center">No published posts.</th>
+                        <th colspan="5" class="text-center">No tags yet.</th>
                     </tr>
                 @endif
            </tbody>

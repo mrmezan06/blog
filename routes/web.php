@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +58,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
          PostsController::class, 'restore'
       ])->name('post.restore');
 
-
-
-
      
      Route::post('/post/store', [
          PostsController::class, 'store'
@@ -99,6 +97,31 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         CategoriesController::class, 'update'
      ])->name('category.update');
 
+
+     // Tags
+     Route::get('/tags', [
+      TagsController::class, 'index'
+   ])->name('tags');
+
+   Route::get('/tag/create', [
+      TagsController::class, 'create'
+   ])->name('tag.create');
+
+   Route::post('/tag/store', [
+      TagsController::class, 'store'
+   ])->name('tag.store');
+
+   Route::get('/tag/edit/{id}', [
+      TagsController::class, 'edit'
+   ])->name('tag.edit');
+
+   Route::post('/tag/update/{id}', [
+      TagsController::class, 'update'
+   ])->name('tag.update');
+
+   Route::get('/tag/delete/{id}', [
+      TagsController::class, 'destroy'
+   ])->name('tag.delete');
 
 });
 

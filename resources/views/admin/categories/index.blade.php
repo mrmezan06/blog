@@ -17,7 +17,7 @@
 
     <div class="panel panel-default mt-4">
         <div class="panel-heading list-group-item">
-            Category Table
+            Categories
         </div>
 
         <div class="panel-body list-group-item">
@@ -28,6 +28,7 @@
                <th>Deleting</th>
            </thead>
            <tbody>
+           @if($categories->count() > 0)
                @foreach($categories as $category)
                <tr>
                    <td>
@@ -41,6 +42,11 @@
                    </td>
                </tr>
                @endforeach
+               @else
+                    <tr>
+                        <th colspan="5" class="text-center">No categories yet.</th>
+                    </tr>
+                @endif
            </tbody>
            </table>
         </div>
