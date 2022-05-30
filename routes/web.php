@@ -37,6 +37,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
       PostsController::class, 'index'
    ])->name('posts');
 
+      Route::get('/posts/trashed', [
+         PostsController::class, 'trashed'
+      ])->name('posts.trashed');
+
+      Route::get('/posts/removed/{id}', [
+         PostsController::class, 'removed'
+      ])->name('posts.removed');
+
      
      Route::post('/post/store', [
          PostsController::class, 'store'

@@ -56,6 +56,12 @@
                             <list class="list-group-item mt-4">
                                 <a href="{{ route('posts') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">All Post</a> 
                             </list>
+
+                            <list class="list-group-item mt-4">
+                                <a href="{{ route('posts.trashed') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">All Trashed Post</a> 
+                            </list>
+
+
                             <list class="list-group-item mt-4">
                                <a href="{{ route('category.create') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Create new category</a>
                             </list>
