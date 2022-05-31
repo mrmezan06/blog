@@ -54,6 +54,14 @@
                             </list>
 
                             <list class="list-group-item mt-4">
+                                <a href="{{ route('users') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Users</a>
+                            </list>
+
+                            <list class="list-group-item mt-4">
+                                <a href="{{ route('user.create') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">New user</a>
+                            </list>
+
+                            <list class="list-group-item mt-4">
                                 <a href="{{ route('tags') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Tags</a>
                             </list>
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use App\Http\Controllers\TagsController;
 
 /* Test Route */
 
+Route::get('/test', function(){
+   return App\Models\User::find(1)->profile;
+});
 
 
 /* Actual Route */
@@ -127,6 +131,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
    Route::get('/tag/delete/{id}', [
       TagsController::class, 'destroy'
    ])->name('tag.delete');
+
+   Route::get('/users', [
+      UsersController::class, 'index'
+   ])->name('users');
+
+   Route::get('/user/create', [
+      UsersController::class, 'create'
+   ])->name('user.create');
+
+   Route::post('/user/store', [
+      UsersController::class, 'store'
+   ])->name('user.store');
+
+   Route::get('/user/admin/{id}', [
+      UsersController::class, 'admin'
+   ])->name('user.admin');
+
+   Route::get('/user/not-admin/{id}', [
+      UsersController::class, 'not_admin'
+   ])->name('user.not.admin');
 
 });
 

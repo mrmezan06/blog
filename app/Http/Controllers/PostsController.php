@@ -132,6 +132,8 @@ class PostsController extends Controller
 
         $post->save();
 
+        $post->tags()->sync($request->tags);
+
         Session::flash('success', 'You Successfully Updated The Post.');
         return redirect()->route('posts');
 
