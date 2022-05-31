@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -34,7 +35,7 @@ class PostsController extends Controller
             Session::flash('info', 'You must have atleast one category before attempting to create a post.');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('categories', $categories);
+        return view('admin.posts.create')->with('categories', $categories)->with('tags', Tag::all());
     }
 
     /**
@@ -49,7 +50,8 @@ class PostsController extends Controller
             'title' => 'required|max:255',
             'featured' => 'required|image',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'tags' => 'required'
         ]);
 
         // Image handling to store it on public/uploads/posts
@@ -65,6 +67,8 @@ class PostsController extends Controller
             'category_id' => $request->category_id,
             'slug' => Str::slug($request->title)
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully.');
 
@@ -93,7 +97,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
+        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**

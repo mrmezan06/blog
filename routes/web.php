@@ -16,6 +16,11 @@ use App\Http\Controllers\TagsController;
 |
 */
 
+/* Test Route */
+
+
+
+/* Actual Route */
 Route::get('/', function () {
    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
