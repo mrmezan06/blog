@@ -64,6 +64,10 @@
                             @endif
 
                             <list class="list-group-item mt-4">
+                                    <a href="{{ route('user.profile') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">My Profile</a>
+                                </list>
+
+                            <list class="list-group-item mt-4">
                                 <a href="{{ route('tags') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Tags</a>
                             </list>
 

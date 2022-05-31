@@ -5,6 +5,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,6 +152,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
    Route::get('/user/not-admin/{id}', [
       UsersController::class, 'not_admin'
    ])->name('user.not.admin');
+
+   Route::get('/user/profile', [
+      ProfilesController::class, 'index'
+   ])->name('user.profile');
+
+   Route::get('/user/delete/{id}', [
+      UsersController::class, 'destroy'
+   ])->name('user.delete');
+
+   Route::post('/user/profile/update', [
+      ProfilesController::class, 'update'
+   ])->name('user.profile.update');
 
 });
 

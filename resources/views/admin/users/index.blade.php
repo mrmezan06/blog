@@ -33,7 +33,7 @@
                @foreach($users as $user)
                <tr>
                    <td>
-                      <img src="{{ asset($user->profile->avatar) }}" alt="{{ $user->profile->user_id }}" width="60px" height="60px" style="border-radius: 50%;">
+                      <img src="{{ asset($user->profile->avatar) }}" alt="{{ $user->profile->user_id }}" class="rounded-circle" width="50" height="10px">
                    </td>
                    <td>
                        {{ $user->name }}
@@ -46,7 +46,9 @@
                        @endif
                    </td>
                    <td>
-                       Delete
+                        @if(Auth::id() !== $user->id)
+                            <a href="{{ route('user.delete', ['id' => $user->id]) }}" class="btn btn-danger">Delete</a>
+                        @endif
                    </td>
                </tr>
                @endforeach

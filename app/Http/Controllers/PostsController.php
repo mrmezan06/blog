@@ -35,7 +35,15 @@ class PostsController extends Controller
             Session::flash('info', 'You must have atleast one category before attempting to create a post.');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('categories', $categories)->with('tags', Tag::all());
+
+        $tags = Tag::all();
+        if($tags->count() == 0)
+        {
+            Session::flash('info', 'You must have atleast one tag before attempting to create a post.');
+            return redirect()->back();
+        }
+
+        return view('admin.posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
