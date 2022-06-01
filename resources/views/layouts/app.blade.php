@@ -23,6 +23,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+        <!-- Summernote Styles -->
+        {{ $styles }}
         
         <!-- FontAwesome -->
         <!-- <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}"> -->
@@ -33,6 +36,8 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Toastr Css -->
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+        <!-- Summernote -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -62,6 +67,7 @@
                                     <a href="{{ route('user.create') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">New user</a>
                                 </list>
                             @endif
+                            
 
                             <list class="list-group-item mt-4">
                                     <a href="{{ route('user.profile') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">My Profile</a>
@@ -92,6 +98,13 @@
                                <a href="{{ route('post.create') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Create new post</a>
                             </list>
 
+                            @if(Auth::user()->admin)
+                                <list class="list-group-item mt-4">
+                                    <a href="{{ route('settings') }}" style="font-size:20.1px; width:100%" class="btn btn-outline-primary">Settings</a>
+                                </list>
+                            @endif
+
+
                         </div>
                         <div class="col-lg-8">
                             {{ $slot }}
@@ -112,6 +125,8 @@
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/toastr.min.js') }}"></script>
+        <!-- Summernote -->
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
         <script>
             @if(Session::has('success'))
@@ -121,6 +136,7 @@
                 toastr.info("{{ Session::get('info') }}")
             @endif
         </script>
+       {{ $scripts }}
     </body>
 </html>
 

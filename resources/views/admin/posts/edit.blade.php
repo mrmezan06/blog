@@ -71,4 +71,9 @@
         </div>
     </div>
     </x-slot>
+    <x-slot name="styles">
+    </x-slot>
+
+    <x-slot name="scripts">
+    </x-slot>
 </x-app-layout>

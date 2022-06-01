@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\FrontEndController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,14 @@ Route::get('/test', function(){
    return App\Models\User::find(1)->profile;
 });
 
+/* Home Route */
+Route::get('/', [
+   FrontEndController::class, 'index'
+])->name('index');
+
 
 /* Actual Route */
-Route::get('/', function () {
+Route::get('/dashboard', function () {
    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
@@ -164,6 +171,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
    Route::post('/user/profile/update', [
       ProfilesController::class, 'update'
    ])->name('user.profile.update');
+
+   Route::get('/settings', [
+      SettingsController::class, 'index'
+   ])->name('settings');
+
+   Route::post('/settings/update', [
+      SettingsController::class, 'update'
+   ])->name('settings.update');
 
 });
 
