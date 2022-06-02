@@ -42,7 +42,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{ $post->category->name }}</a>
+                                <a href="{{ route('category.single', [ 'id' => $post->category->id ]) }}">{{ $post->category->name }}</a>
                                 
                             </span>
 
@@ -86,7 +86,7 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
-                        <img src="{{ asset('') }}app/img/blog-details-author.png" alt="Author">
+                        <img src="{{ asset('app/img/blog-details-author.png') }}" alt="Author">
                     </div>
 
                     <div class="blog-details-author-content">
@@ -121,7 +121,7 @@
 
                 <div class="pagination-arrow">
 
-                    @if($next)
+                    @if($prev)
                         <a href="{{ route('post.single', [ 'slug' => $prev->slug ]) }}" class="btn-prev-wrap">
                             <svg class="btn-prev">
                                 <use xlink:href="#arrow-left"></use>
@@ -133,7 +133,7 @@
                         </a>
                     @endif
 
-                    @if($prev)
+                    @if($next)
                         <a href="{{ route('post.single', [ 'slug' => $next->slug ]) }}" class="btn-next-wrap">
                             <div class="btn-content">
                                 <div class="btn-content-title">Next Post</div>
@@ -149,23 +149,43 @@
 
                 <div class="comments">
 
-                    <div class="heading text-center">
-                        <h4 class="h1 heading-title">Comments</h4>
-                        <div class="heading-line">
-                            <span class="short-line"></span>
-                            <span class="long-line"></span>
+                        <div class="heading text-center">
+                            <h4 class="h1 heading-title">Comments</h4>
+                                <div class="heading-line">
+                                    <span class="short-line"></span>
+                                    <span class="long-line"></span>
+                                </div>
                         </div>
-                    </div>
+                        @include('includes.disqus')
                 </div>
-
-                <div class="row">
-
-                </div>
-
-
             </div>
 
             <!-- End Post Details -->
+
+            <!-- Sidebar-->
+
+            <div class="col-lg-12">
+                <aside aria-label="sidebar" class="sidebar sidebar-right">
+                    <div  class="widget w-tags">
+                        <div class="heading text-center">
+                            <h4 class="heading-title">ALL BLOG TAGS</h4>
+                            <div class="heading-line">
+                                <span class="short-line"></span>
+                                <span class="long-line"></span>
+                            </div>
+                        </div>
+
+                        <div class="tags-wrap">
+                            @foreach($tags as $tag)
+                                <a href="#" class="w-tags-item">{{ $tag->tag }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- End Sidebar-->
+
 
         </main>
     </div>

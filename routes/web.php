@@ -22,9 +22,9 @@ use App\Http\Controllers\FrontEndController;
 
 /* Test Route */
 
-Route::get('/test', function(){
+/* Route::get('/test', function(){
    return App\Models\User::find(1)->profile;
-});
+}); */
 
 /* Home Route */
 Route::get('/', [
@@ -35,6 +35,11 @@ Route::get('/', [
 Route::get('/post/{slug}', [
    FrontEndController::class, 'singlePost'
 ])->name('post.single');
+
+/* Single Category Post */
+Route::get('/category/{id}', [
+   FrontEndController::class, 'category'
+])->name('category.single');
 
 
 /* Actual Route */

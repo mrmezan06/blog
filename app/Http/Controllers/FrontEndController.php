@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 class FrontEndController extends Controller
 {
@@ -34,7 +35,21 @@ class FrontEndController extends Controller
                 ->with('next', Post::find($next_id))
                 ->with('prev', Post::find($prev_id))
                 ->with('categories', Category::take(5)->get())
+                ->with('settings', Setting::first())
+                ->with('tags', Tag::all());
+                
+    }
+
+    public function category($id)
+    {
+        $category = Category::find($id);
+        
+        return view('category')
+                ->with('category', $category)
+                ->with('title', $category->name)
+                ->with('categories', Category::take(5)->get())
                 ->with('settings', Setting::first());
                 
     }
+
 }
