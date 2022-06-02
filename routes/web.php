@@ -31,6 +31,16 @@ Route::get('/', [
    FrontEndController::class, 'index'
 ])->name('index');
 
+/* Search Results Route */
+Route::get('/results', function(){
+   $posts = \App\Models\Post::where('title', 'like', '%'.request('query').'%')->get();
+        return view('results')
+        ->with('posts', $posts)
+        ->with('title', 'Search results: '. request('query'))
+        ->with('categories', \App\Models\Category::take(5)->get())
+        ->with('settings', \App\Models\Setting::first());
+})->name('results');
+
 /* Single Page Route */
 Route::get('/post/{slug}', [
    FrontEndController::class, 'singlePost'
@@ -40,6 +50,11 @@ Route::get('/post/{slug}', [
 Route::get('/category/{id}', [
    FrontEndController::class, 'category'
 ])->name('category.single');
+
+/* Single Tag Post */
+Route::get('/tag/{id}', [
+   FrontEndController::class, 'tag'
+])->name('tag.single');
 
 
 /* Actual Route */
