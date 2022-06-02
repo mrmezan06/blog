@@ -31,6 +31,11 @@ Route::get('/', [
    FrontEndController::class, 'index'
 ])->name('index');
 
+/* Single Page Route */
+Route::get('/post/{slug}', [
+   FrontEndController::class, 'singlePost'
+])->name('post.single');
+
 
 /* Actual Route */
 Route::get('/dashboard', function () {
