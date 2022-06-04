@@ -26,6 +26,10 @@ You may also see any lint errors in the console.
 
 
 
+https://user-images.githubusercontent.com/43064536/171982541-7c30d6cd-4424-4d04-b2bb-4b341dc944a8.mp4
+
+
+
 # High Resoulution Demo Video
 
 https://youtu.be/mXMsiZNvoiQ
