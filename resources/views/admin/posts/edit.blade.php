@@ -72,8 +72,18 @@
     </div>
     </x-slot>
     <x-slot name="styles">
+<!-- include summernote css/js -->
+        
     </x-slot>
 
     <x-slot name="scripts">
+    
+    <script>
+    $(document).ready(function() {
+        $('#content').summernote(
+            {height: 100,} 
+        );
+    });
+  </script>
     </x-slot>
 </x-app-layout>

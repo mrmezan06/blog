@@ -21,6 +21,9 @@
 
     <!--Styles for RTL-->
 
+    <!-- Toastr Css -->
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+
 
     <!--<link rel="stylesheet" type="text/css" href="app/css/rtl.css">-->
 
@@ -276,33 +279,7 @@
 
 <!-- Subscribe Form -->
 
-<div class="container-fluid bg-green-color">
-    <div class="row">
-        <div class="container">
-            <div class="row">
-                <div class="subscribe scrollme">
-                    <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
-                        <h4 class="subscribe-title">Email Newsletters!</h4>
-                        <form class="subscribe-form" method="post" action="">
-                            <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
-                            <button class="subscr-btn">subscribe
-                                <span class="semicircle--right"></span>
-                            </button>
-                        </form>
-                        <div class="sub-title">Sign up for new Seosignt content, updates, surveys & offers.</div>
-
-                    </div>
-
-                    <div class="images-block">
-                        <img src="{{ asset('app/img/subscr-gear.png') }}" alt="gear" class="gear">
-                        <img src="{{ asset('app/img/subscr1.png') }}" alt="mail" class="mail">
-                        <img src="{{ asset('app/img/subscr-mailopen.png') }}" alt="mail" class="mail-2">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('includes.form')
 
 <!-- End Subscribe Form -->
 </div>
@@ -352,21 +329,7 @@
 
 <!-- Overlay Search -->
 
-<div class="overlay_search">
-    <div class="container">
-        <div class="row">
-            <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
-                    <a href="#" class="overlay_search-close">
-                        <span></span>
-                        <span></span>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('includes.search')
 
 <!-- End Overlay Search -->
 
@@ -377,13 +340,21 @@
 <script src="{{ asset('app/js/swiper.jquery.min.js') }}"></script>
 <script src="{{ asset('app/js/theme-plugins.js') }}"></script>
 <script src="{{ asset('app/js/main.js') }}"></script>
-<script src="{{ asset('app/js/form-actions.js') }}"></script>
+
 
 <script src="{{ asset('app/js/velocity.min.js') }}"></script>
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
 
 <!-- ...end JS Script -->
+
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+
+<script>
+    @if(Session::has('subscribed'))
+        toastr.success("{{ Session::get('subscribed') }}")
+    @endif
+</script>
 
 </body>
 </html>

@@ -8,6 +8,11 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\FrontEndController;
+use Illuminate\Support\Facades\Session;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +25,20 @@ use App\Http\Controllers\FrontEndController;
 |
 */
 
+/* Newsletter */
+
+Route::post('/subscribe', function(){
+   $email = request('email');
+   Newsletter::subscribe($email);
+   Session::flash('subscribed', 'Successfully subcribed.');
+   return redirect()->back();
+});
+
 /* Test Route */
 
-/* Route::get('/test', function(){
+Route::get('/test', function(){
    return App\Models\User::find(1)->profile;
-}); */
+});
 
 /* Home Route */
 Route::get('/', [
@@ -59,12 +73,16 @@ Route::get('/tag/{id}', [
 
 /* Actual Route */
 Route::get('/dashboard', function () {
-   return view('dashboard');
+   return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard')
+    ->with('post_count', Post::all()->count())
+    ->with('trashed_count',Post::onlyTrashed()->get()->count())
+    ->with('users_count', User::all()->count())
+    ->with('category_count', Category::all()->count());
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
