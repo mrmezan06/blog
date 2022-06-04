@@ -6,9 +6,9 @@ Laravel MySQL
 
 # Plugins
 
-[https://codeseven.github.io/toastr/](Toastr), [https://summernote.org/](Summernote), [https://disqus.com/](Disqus), [https://www.addthis.com/](AddThis), [https://mailchimp.com/](MailChimp)
+[Toastr](https://codeseven.github.io/toastr/), [Summernote](https://summernote.org/), [Disqus](https://disqus.com/), [AddThis](https://www.addthis.com/), [MailChimp](https://mailchimp.com)
 
-MailChimp settings from [https://appdividend.com/2018/05/24/how-to-create-newsletter-in-laravel/](https://appdividend.com)
+MailChimp settings from [https://appdividend.com](https://appdividend.com/2018/05/24/how-to-create-newsletter-in-laravel/)
 
 ## Available Scripts
 
@@ -21,6 +21,8 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view it in your browser
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+<!-- Key->457b36f60968f2df9449d5086f37a895-us18 List->aed6a9e4d2 -->
 
 # Low Resoulution Demo Video
 
